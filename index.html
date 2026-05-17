@@ -1,299 +1,277 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <titl>
-    <!--book store-->
-  </titl>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Molar Mass Calculator</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    width:350px;
+    box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    font-size:18px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+.result{
+    margin-top:20px;
+    background:#334155;
+    padding:15px;
+    border-radius:10px;
+    line-height:1.8;
+}
+
+hr{
+    border:none;
+    height:1px;
+    background:#475569;
+    margin:15px 0;
+}
+
+</style>
+
 </head>
-
 <body>
-  <h1>book store</h1>
-  <title>Welcom to chemistry assistant</title>
-  <p>this is my book store السلام عليكم وحمة الله وبركاته</p>
-  <p> hello welcome to here we have <b>a big sale</b></p>
-  <p> hello welcome to here we <u>have</u> <mark>a big sale</mark></p>
-  <p><del>$100</del> <ins>$80</ins></p>
-  <p>H<sub>2</sub>O</p>
-  <p>2<sup>10</sup></p>
-  <a href="http://google.com">Google</a>
-  <P><a href="http://facebook.com" target="_blank">Facebook</a></P>
-  <a href="http://facebook.com" target="_blank" title="go to facebook">Facebook</a>
-  <a href="mailto:mahmood.free996@gmail.com" title="contact me"></a>Email</a>
-  <img src="PROJECETS/imeges/papje.JPG.jpg" alt="google logo" width="300" height="300">
-  <img src="IMG.JPG.JPG" alt="google logo" width="600" height="300">
-  <ul>
-    <li>quality</li>
-    <li>COOKING</li>
-    <li>LOOKING</li>
-    <ul>
-      <li>price</li>
-    </ul>
-    <ul>
-      <li>WHITE</li>
-    </ul>
-  </ul>
-  <ol>
-    <li>NAME</li>
-    <li>AGE</li>
-    <li>ADDRESS</li>
-  </ol>
-  <ol start="100">
-    <li>rrr</li>
-    <li>eee</li>
-    <li>fdsSS</li>
-  </ol>
-  <ol type="A">
-    <li>rrr</li>
-    <li>eee</li>
-    <li>fdsSS</li>
-  </ol>
-  <DL>
-    <DT>html</DT>
-    <DD>web language</DD>
-    <DT>css</DT>
-    <DD>styling language</DD>
-    <DT>javascript</DT>
-    <DD>programming language</DD>
-  </DL>
-  <Table>
-    <Caption>Customer Information</Caption>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
-      <th>Phone</th>
-    </tr>
-    <tr>
-      <td>John</td>
-      <td>30</td>
-      <td>123 Main St</td>
-      <td>555-1234</td>
-    </tr>
-    <tr>
-      <td>Mary</td>
-      <td>25</td>
-      <td>456 Elm St</td>
-      <td>555-5678</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>40</td>
-      <td>789 Oak St</td>
-      <td>555-9012</td>
-    </tr>
-    <tr>
-      <td colspan="3">quality 1</td>
-      <td>ekip</td>
-    </tr>
-  </Table>
-  <span>quality 1</span>
-  <br>our new seller
-  <hr>
-  <p>the new customer</p>
-  <div class="romantic">
-    <p>new book for toda</p>
-    <h3>morning book</h3>
-    <span>10$</span>
-  </div>
-  <hr>
-  <div class="police">
-    <p>new book for today</p>
-    <h3>morning book</h3>
-    <span>10$</span>
-  </div>
-  <hr>
-  <p> this is &copy; a new &lt;MS&gt; paragraph</p>
-  <header>chemistry assistant</header>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <section>
-    <section>to</section>
-    <aside>for</aside>
-    <article>chemistry assistant</article>
-  </section>
-  <footer>
-    <p>&copy; 2023 Chemistry Assistant. All rights reserved.</p>
-  </footer>
+
+<div class="container">
+
+<h1>Molar Mass Calculator</h1>
+
+<input type="text" id="formula" placeholder="Example: H2SO4">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result">
+Result will appear here
+</div>
+
+</div>
+
+<script>
+
+const elements = [
+    { symbol: "H", molarMass: 1.0080 },
+    { symbol: "He", molarMass: 4.00260 },
+    { symbol: "Li", molarMass: 7.0 },
+    { symbol: "Be", molarMass: 9.012183 },
+    { symbol: "B", molarMass: 10.81 },
+    { symbol: "C", molarMass: 12.011 },
+    { symbol: "N", molarMass: 14.007 },
+    { symbol: "O", molarMass: 15.999 },
+    { symbol: "F", molarMass: 18.99840316 },
+    { symbol: "Ne", molarMass: 20.180 },
+    { symbol: "Na", molarMass: 22.9897693 },
+    { symbol: "Mg", molarMass: 24.305 },
+    { symbol: "Al", molarMass: 26.981538 },
+    { symbol: "Si", molarMass: 28.085 },
+    { symbol: "P", molarMass: 30.97376200 },
+    { symbol: "S", molarMass: 32.07 },
+    { symbol: "Cl", molarMass: 35.45 },
+    { symbol: "Ar", molarMass: 39.9 },
+    { symbol: "K", molarMass: 39.0983 },
+    { symbol: "Ca", molarMass: 40.08 },
+    { symbol: "Sc", molarMass: 44.95591 },
+    { symbol: "Ti", molarMass: 47.867 },
+    { symbol: "V", molarMass: 50.9415 },
+    { symbol: "Cr", molarMass: 51.996 },
+    { symbol: "Mn", molarMass: 54.93804 },
+    { symbol: "Fe", molarMass: 55.84 },
+    { symbol: "Co", molarMass: 58.93319 },
+    { symbol: "Ni", molarMass: 58.693 },
+    { symbol: "Cu", molarMass: 63.55 },
+    { symbol: "Zn", molarMass: 65.4 },
+    { symbol: "Ga", molarMass: 69.723 },
+    { symbol: "Ge", molarMass: 72.63 },
+    { symbol: "As", molarMass: 74.92159 },
+    { symbol: "Se", molarMass: 78.97 },
+    { symbol: "Br", molarMass: 79.90 },
+    { symbol: "Kr", molarMass: 83.80 },
+    { symbol: "Rb", molarMass: 85.468 },
+    { symbol: "Sr", molarMass: 87.62 },
+    { symbol: "Y", molarMass: 88.90584 },
+    { symbol: "Zr", molarMass: 91.22 },
+    { symbol: "Nb", molarMass: 92.90637 },
+    { symbol: "Mo", molarMass: 95.95 },
+    { symbol: "Tc", molarMass: 96.90636 },
+    { symbol: "Ru", molarMass: 101.1 },
+    { symbol: "Rh", molarMass: 102.9055 },
+    { symbol: "Pd", molarMass: 106.42 },
+    { symbol: "Ag", molarMass: 107.868 },
+    { symbol: "Cd", molarMass: 112.41 },
+    { symbol: "In", molarMass: 114.818 },
+    { symbol: "Sn", molarMass: 118.71 },
+    { symbol: "Sb", molarMass: 121.760 },
+    { symbol: "Te", molarMass: 127.6 },
+    { symbol: "I", molarMass: 126.9045 },
+    { symbol: "Xe", molarMass: 131.29 },
+    { symbol: "Cs", molarMass: 132.9054520 },
+    { symbol: "Ba", molarMass: 137.33 },
+    { symbol: "La", molarMass: 138.9055 },
+    { symbol: "Ce", molarMass: 140.116 },
+    { symbol: "Pr", molarMass: 140.90766 },
+    { symbol: "Nd", molarMass: 144.24 },
+    { symbol: "Pm", molarMass: 144.91276 },
+    { symbol: "Sm", molarMass: 150.4 },
+    { symbol: "Eu", molarMass: 151.964 },
+    { symbol: "Gd", molarMass: 157.25 },
+    { symbol: "Tb", molarMass: 158.92535 },
+    { symbol: "Dy", molarMass: 162.500 },
+    { symbol: "Ho", molarMass: 164.93033 },
+    { symbol: "Er", molarMass: 167.26 },
+    { symbol: "Tm", molarMass: 168.93422 },
+    { symbol: "Yb", molarMass: 173.05 },
+    { symbol: "Lu", molarMass: 174.9667 },
+    { symbol: "Hf", molarMass: 178.49 },
+    { symbol: "Ta", molarMass: 180.9479 },
+    { symbol: "W", molarMass: 183.84 },
+    { symbol: "Re", molarMass: 186.207 },
+    { symbol: "Os", molarMass: 190.2 },
+    { symbol: "Ir", molarMass: 192.22 },
+    { symbol: "Pt", molarMass: 195.08 },
+    { symbol: "Au", molarMass: 196.96657 },
+    { symbol: "Hg", molarMass: 200.59 },
+    { symbol: "Tl", molarMass: 204.383 },
+    { symbol: "Pb", molarMass: 207 },
+    { symbol: "Bi", molarMass: 208.98040 },
+    { symbol: "Po", molarMass: 208.98243 },
+    { symbol: "At", molarMass: 209.98715 },
+    { symbol: "Rn", molarMass: 222.01758 },
+    { symbol: "Fr", molarMass: 223.01973 },
+    { symbol: "Ra", molarMass: 226.02541 },
+    { symbol: "Ac", molarMass: 227.02775 },
+    { symbol: "Th", molarMass: 232.038 },
+    { symbol: "Pa", molarMass: 231.03588 },
+    { symbol: "U", molarMass: 238.0289 },
+    { symbol: "Np", molarMass: 237.048172 },
+    { symbol: "Pu", molarMass: 244.06420 },
+    { symbol: "Am", molarMass: 243.061380 },
+    { symbol: "Cm", molarMass: 247.07035 },
+    { symbol: "Bk", molarMass: 247.07031 },
+    { symbol: "Cf", molarMass: 251.07959 },
+    { symbol: "Es", molarMass: 252.0830 },
+    { symbol: "Fm", molarMass: 257.09511 },
+    { symbol: "Md", molarMass: 258.09843 },
+    { symbol: "No", molarMass: 259.10100 },
+    { symbol: "Lr", molarMass: 266.120 },
+    { symbol: "Rf", molarMass: 267.122 },
+    { symbol: "Db", molarMass: 268.126 },
+    { symbol: "Sg", molarMass: 269.128 },
+    { symbol: "Bh", molarMass: 270.133 },
+    { symbol: "Hs", molarMass: 269.1336 },
+    { symbol: "Mt", molarMass: 277.154 },
+    { symbol: "Ds", molarMass: 282.166 },
+    { symbol: "Rg", molarMass: 282.169 },
+    { symbol: "Cn", molarMass: 286.179 },
+    { symbol: "Nh", molarMass: 286.182 },
+    { symbol: "Fl", molarMass: 290.192 },
+    { symbol: "Mc", molarMass: 290.196 },
+    { symbol: "Lv", molarMass: 293.205 },
+    { symbol: "Ts", molarMass: 294.211 },
+    { symbol: "Og", molarMass: 295.216 }
+];
+
+const atomicMassCaseInsensitive = {};
+elements.forEach(el => {
+    atomicMassCaseInsensitive[el.symbol.toLowerCase()] = {
+        properSymbol: el.symbol,
+        mass: el.molarMass
+    };
+});
+
+function calculate() {
+    let formula = document.getElementById("formula").value.trim();
+    let total = 0;
+    let details = "";
+    let i = 0;
+
+    while (i < formula.length) {
+        if (/[A-Za-z]/.test(formula[i])) {
+            let element = formula[i];
+            i++;
+
+            if (i < formula.length && /[A-Za-z]/.test(formula[i])) {
+                let currentTwoLetter = (element + formula[i]).toLowerCase();
+                if (atomicMassCaseInsensitive[currentTwoLetter]) {
+                    element += formula[i];
+                    i++;
+                }
+            }
+
+            let countStr = "";
+            while (i < formula.length && /\d/.test(formula[i])) {
+                countStr += formula[i];
+                i++;
+            }
+            let count = parseInt(countStr) || 1;
+
+            let searchKey = element.toLowerCase();
+            if (atomicMassCaseInsensitive[searchKey]) {
+                let elementData = atomicMassCaseInsensitive[searchKey];
+                let mass = elementData.mass * count;
+                total += mass;
+                details += `${elementData.properSymbol} × ${count} = ${mass.toFixed(2)} g/mol <br>`;
+            } else {
+                details += `Unknown element: ${element}<br>`;
+            }
+        } else {
+            i++;
+        }
+    }
+
+    document.getElementById("result").innerHTML = `
+        <h3>Total Molar Mass</h3>
+        <p>${total.toFixed(2)} g/mol</p>
+        <hr>
+        ${details}
+    `;
+}
+
+</script>
+
 </body>
-<header>
-  <h2>logo</h2>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</header>
-<hr>
-<nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-
-</nav>
-<section class="content">
-  content goes here
-</section>
-<aside>
-  sidebar content goes here
-</aside>
-<footer>
-  <p>&copy; 2023 Chemistry Assistant. All rights reserved.</p>
-</footer>
-
-<div class="header">
-  <h2>logo</h2>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-<hr>
-<div>
-  <class= navigation>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-</div>
-<div class="content">
-  content goes here
-</div>
-<div class="sidebar">
-  sidebar content goes here
-</div>
-<div class="footer">
-  <p>&copy; 2023 Chemistry Assistant. All rights reserved.</p>
-</div>
-<audio controls autoplay loop muted>
-  <source src="audio.mp3" type="audio/mpeg">
-  <source src="audio.ogg" type="audio/ogg">
-  Your browser does not support the audio element.
-</audio>
-<video controls autoplay loop muted width="320" height="240" poster="IMG.JPG.JPG">
-  <source src="Birghtday.mp4" type="video/mp4">
-  <source src="video.ogg" type="video/ogg">
-  Your browser does not support the video element.
-  <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-</video>
-<form action="submit" method="get">
-  <label>Username</label>
-  <input type="text" id="username" name="username" required placeholder="mahmut" readonly value="mahmut">
-  <input type="subject" id="subject" name="subject" autofocus placeholder="write your subject">
-  <label>Password:</label>
-  <input type="password" id="password" name="password" required placeholder="write a complex password" minlength="5"
-    maxlength="8">
-  <label>Email:</label>
-  <input type="email" id="email" name="email" required placeholder="mahmut@example.com" disabled>
-  <input type="reset">
-  <input type="submit" value="save">
-  <input type="range" id="volume" name="volume" min="0" max="100" step="20" value="50" autofocus>
-  <input type="color" id="color" name="color" value="#ff0000">
-  <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" />
-  <hr>
-  <div>
-    <input type="checkbox" id="win1" name="subscribe" value="windows">
-    <label for="win1">Windows</label>
-  </div>
-  <div>
-    <input type="checkbox" id="linux1" name="subscribe" value="linux">
-    <label for="linux1">Linux</label>
-  </div>
-  <div>
-    <input type="checkbox" id="mac1" name="subscribe" value="mac">
-    <label for="mac1">Mac</label>
-  </div>
-  <hr>
-  <div>
-    <input type="radio" id="win" name="subscribe" value="windows">
-    <label for="win">Windows</label>
-  </div>
-  <div>
-    <input type="radio" id="linux" name="subscribe" value="linux">
-    <label for="linux">Linux</label>
-  </div>
-  <div>
-    <input type="radio" id="max" name="subscribe" value="mac">
-    <label for="max">Mac</label>
-  </div>
-  <hr>
-  <label for="book">Choose your books:</label>
-  <select name="book" id="book" multiple size="5">
-    <optgroup label="Science">
-      <option value="chemistry">Chemistry</option>
-      <option value="physics">Physics</option>
-    </optgroup>
-    <optgroup label="Mathematics">
-      <option value="math">Math</option>
-    </optgroup>
-  </select>
-  <hr>
-  <label for="subject">Your subject:</label>
-  <textarea name="subject" id="subject" rows="10
-  " cols="10" placeholder="Enter your subject here..."></textarea>
-  <hr>
-  <label for="file">Upload a file:</label>
-  <input type="file" id="file" name="file">
-  <hr>
-  <label for="file">search:</label>
-  <input type="search" id="search" name="search">
-  <hr>
-  <label for="url">Enter a URL:</label>
-  <input type="url" id="url" name="url">
-  <hr>
-  <label for="date">Enter a date:</label>
-  <input type="date" id="date" name="date">
-  <hr>
-  <label for="month">Enter a month:</label>
-  <input type="month" id="month" name="month">
-  <hr>
-  <label for="time">Enter a time:</label>
-  <input type="time" id="time" name="time">
-
-  <input list="programming-languages" name="programming-language" id="programming-language"
-    placeholder="Choose a programming language">
-  <datalist id="programming-languages">
-    <option value="Python">
-    <option value="JavaScript">
-    <option value="Java">
-    <option value="C++">
-  </datalist>
-</form>
-<hr>
-<q>this is my new project</q>
-<blockquote>this is my new project</blockquote>
-<button>Click me</button>
-<hr>
-<div>https://www.youtube.com/<wbr>watch?v=AzjtVtxoBLc&list=<wbr>PLDoPjvoNmBAw_t_XWUFbBX-<wbr>c9MafPk9ji&index=33
-</div>
-<p>السلام عليكم 2 welcome</p>
-<p><bdi>السلام عليكم </bdi> 2 welcome </p>
-<code>
-  var x = 20;
-  var y = 30;
-  console.log(x+y);
- </code>
-<p>
-  var x = 20;
-  var y = 30;
-  console.log(x+y);
-</p>
-<pre>
-  var x = 20;
-  var y = 30;
-  console.log(x+y);
-</pre>
-<iframe src="https://elzero.org/" frameborder="0" width="800" height="600"></iframe>
-
 </html>
