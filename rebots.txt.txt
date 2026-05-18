@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chemicalassistant.github.io/chemical-assistant/sitemap.xml
